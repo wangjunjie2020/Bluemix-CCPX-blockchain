@@ -26,7 +26,7 @@ function build_bag(){
 // Home
 // ============================================================================================================================
 router.route('/').get(function(req, res){
-	res.json({ message: 'CCPX-webservices' }); 
+	res.json({ "message": 'CCPX-webservices' }); 
 });
 
 // ============================================================================================================================
@@ -48,5 +48,30 @@ router.route('/p2').get(function(req, res){
 router.route('/p2/:page?').get(function(req, res){
 	res.render('part2', {title: 'Marbles Part 2', bag: build_bag()});
 });
+
+// ============================================================================================================================
+// CCPX-blockchain webservices
+// ============================================================================================================================
+router.post('/',function(req, res,next){
+	res.json({ "message": 'Service got post requested' }); 
+});
+/*router.post('/storeTx',(function(req, res){
+	res.json({ 
+		"respond": 100,
+		"content": req.param('arg') 
+	}); 
+});
+router.post('/showTx',function(req, res){
+	res.json({ 
+		"respond": 300,
+		"content": {
+			"seller_ID":req.param('arg'),
+			"TX":[
+				{"foo":"bar"},
+				{"foo":"bar"}
+			]
+		}
+	}); 
+});*/
 
 module.exports = router;
